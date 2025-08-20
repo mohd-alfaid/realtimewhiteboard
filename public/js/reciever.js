@@ -1,3 +1,7 @@
+// 👇 yaha apna Render backend ka URL lagao
+const socket = io("https://realtimewhiteboard-p0se.onrender.com");
+
+// fir tumhare events handle honge
 socket.on("onsize", function(size) {
   ctx.lineWidth = size;
 });
@@ -32,15 +36,11 @@ socket.on("onundo", function() {
 socket.on("onredo", function() {
   redoMaker();
 });
-
 socket.on("onthemeChange", (theme) => {
-  // Remove old theme classes
   canvasWrapper.classList.remove(...themeClasses);
-  // Apply new theme
   canvasWrapper.classList.add(theme);
   currentTheme = theme;
 
-  // Highlight active option
   themeOptions.forEach(opt => {
     opt.classList.remove("active");
     if (opt.getAttribute("data-theme") === theme) {
