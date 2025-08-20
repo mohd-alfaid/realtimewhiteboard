@@ -1,0 +1,110 @@
+/* ================= Sticky Pad Box ================= */
+.sticky-pad {
+  z-index: 40; /* Ye box sab elements ke upar dikhne ke liye layer priority set karta hai */
+  min-width: 246px; /* Sticky note ka minimum width fix */
+  max-height: 200px; /* Sticky note ka maximum height fix */
+  max-width: 246px; /* Sticky note ka maximum width fix */
+  padding-top: 30px; /* Top me thoda extra space deta hai (nav bar ke liye jagah banane ke liye) */
+  position: absolute; /* Isko free move aur fixed jagah pe rakhne ke liye */
+  left: 50%; /* Screen ke beech horizontally */
+  top: 50%; /* Screen ke beech vertically */
+  transform: translate(-50%, -50%); /* Center align karne ke liye */
+  border-radius: 16px; /* Corner rounded kar deta hai */
+
+  /* 🌸 Cute pastel gradient with glassy look */
+  background: rgba(255, 255, 255, 0.25); /* Transparent white background */
+  background: linear-gradient(
+    135deg, /* Gradient angle */
+    rgba(255, 182, 193, 0.3), /* Light Pink */
+    rgba(176, 224, 230, 0.3), /* Light Blue */
+    rgba(221, 160, 221, 0.3)  /* Light Purple */
+  );
+
+  backdrop-filter: blur(12px) saturate(150%); /* Glassmorphism blur + color saturation */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Transparent white border */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Shadow for 3D depth */
+  overflow: hidden; /* Extra content cut kar dega */
+}
+
+/* ================= Sticky Pad Nav Bar ================= */
+.sticky-pad .nav {
+  z-index: 41; /* Nav bar sticky pad ke upar rhega */
+  height: 35px; /* Nav bar ki height */
+  width: 100%; /* Full width cover karega */
+  display: flex; /* Flexbox use kiya gaya icons + text alignment ke liye */
+  align-items: center; /* Content ko vertical center me rakhta hai */
+
+  /* 🎀 Pastel gradient for nav bar */
+  background: linear-gradient(90deg, #ffb3d9, #b3dfff, #d9b3ff);
+
+  padding: 0 10px; /* Left-right padding */
+  cursor: move; /* Mouse cursor drag wali ban jaegi */
+  position: absolute; /* Sticky pad ke andar fixed top */
+  top: 0;
+  left: 0;
+  color: #fff; /* White text */
+  font-weight: bold; /* Bold text */
+  letter-spacing: 0.5px; /* Letter ke beech thoda gap */
+  border-radius: 16px 16px 0 0; /* Upar ke corner rounded, niche normal */
+}
+
+/* ================= Close Button (Red Circle) ================= */
+.close {
+  z-index: 50; /* Nav ke upar bhi rhega */
+  right: 12px; /* Right corner pe thoda andar */
+  top: 8px; /* Top se spacing */
+  position: absolute; /* Exact jagah control karne ke liye */
+  width: 16px; /* Circle ka size */
+  height: 16px;
+  border-radius: 50%; /* Circle shape */
+
+  /* ❤️ Pink-Red radial gradient */
+  background: radial-gradient(circle at 30% 30%, #ff7fa3, #d62246);
+  box-shadow: 0 2px 5px rgba(214, 34, 70, 0.5); /* Thoda glow effect */
+  transition: transform 0.2s ease; /* Hover effect smooth transition */
+}
+.close:hover {
+  cursor: pointer; /* Mouse pe pointer icon */
+  transform: scale(1.2); /* Thoda bada ho jata hai hover par */
+}
+
+/* ================= Minimize Button (Green Circle) ================= */
+.minimize {
+  z-index: 50; /* Upar hi rhega */
+  right: 38px; /* Close button se thoda left */
+  top: 8px;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+
+  /* 💚 Mint-Blue gradient */
+  background: radial-gradient(circle at 30% 30%, #6fffd6, #00c897);
+  box-shadow: 0 2px 5px rgba(0, 200, 151, 0.4); /* Shadow effect */
+  transition: transform 0.2s ease; /* Hover smooth */
+}
+.minimize:hover {
+  cursor: pointer; /* Mouse icon change */
+  transform: scale(1.2); /* Hover pe bada ho jata hai */
+}
+
+/* ================= Writing Pad (Textarea / Image) ================= */
+.sticky-pad textarea,
+.sticky-pad img {
+  min-height: 200px; /* Minimum writing area */
+  width: 100%; /* Full width occupy kare */
+  background: transparent; /* Transparent background */
+  box-sizing: border-box; /* Padding ko width me include karega */
+  padding: 12px; /* Inner padding for text/image */
+  border: none; /* Border hata diya */
+  font-family: 'Segoe UI', sans-serif; /* Font style */
+  font-size: 1rem; /* Normal size text */
+  text-align: center; /* Centered text/image */
+  color: #2e2e2e; /* Dark gray text */
+  text-shadow: 0 1px 1px rgba(255,255,255,0.5); /* Soft highlight */
+  border-radius: 0 0 16px 16px; /* Bottom rounded corners */
+}
+.sticky-pad textarea:focus,
+.sticky-pad textarea:active {
+  outline: none; /* Click/typing pe border outline remove */
+}

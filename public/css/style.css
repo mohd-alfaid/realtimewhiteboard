@@ -1,0 +1,173 @@
+/* 🌍 Reset CSS for all elements */
+* {
+  margin: 0;                /* By default margin hata diya */
+  padding: 0;               /* By default padding hata diya */
+  box-sizing: border-box;   /* width/height calculation me padding + border include ho jaye */
+}
+
+/* 🖼️ Toolbar icons ki styling */
+.tool-img {
+  height: 3rem;             /* Icon ki height */
+  width: 3rem;              /* Icon ki width */
+  margin-right: 1rem;       /* Icon ke beech gap right side */
+  transition: transform 0.3s; /* Hover ya change pe smooth scaling effect */
+}
+
+/* 🔘 Active icon ke liye special style */
+.active {
+  width: 67px;              /* Thoda bada size jab active ho */
+  text-align: center;       /* Text center align */
+  padding: 7px;             /* Andar ka spacing */
+  border-radius: 50px;      /* Rounded look (pill shape) */
+  box-sizing: border-box;
+  background-color: lightgray; /* Highlight bg for active tool */
+}
+
+/* 🎨 Top toolbar ki styling */
+.toolBar {
+  display: flex;            /* Flexbox for alignment */
+  justify-content: center;  /* Center horizontally */
+  align-items: center;      /* Center vertically */
+  gap: 2rem;                /* Gap between icons */
+  height: 18vh;             /* Toolbar ki height (18% of screen height) */
+}
+
+/* 📋 Tool panel (options ke liye) */
+.tool-panel {
+  display: flex;           
+  background-color: white;  /* White background */
+  height: 81%;             /* Panel ki height */
+  width: 70%;              /* Panel width */
+  justify-content: space-evenly; /* Options equal spacing */
+  align-items: center;     /* Vertically center */
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175); /* Shadow */
+  border-radius: 0.8rem;   /* Rounded corners */
+  opacity: 0;              /* By default hidden (invisible) */
+}
+
+/* 🧰 Tool ke options ka box */
+.tool-options {
+  height: 7rem;
+  width: 10rem;
+  display: none;           /* By default hidden */
+  position: absolute;      /* Position absolute relative to parent */
+  top: 4.75rem;            /* Toolbar se distance */
+  left: -3rem;             /* Thoda left me shift */
+  border-radius: 0.5rem;   /* Rounded look */
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175); /* Shadow */
+}
+
+/* 🩹 Eraser options ke liye special adjustment */
+.tool-options.eraser {
+  left: -3rem;
+  height: 3rem;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+/* 📢 Class "show" lage to options dikhe */
+.show {
+  display: block;
+}
+
+/* ✏️ Pencil size slider section */
+.pencil-size {
+  height: 40%;             
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: grey 1px solid; /* Divider line niche */
+}
+
+/* 🎨 Pencil color palette section */
+.pencil-color {
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ /* 🎚️ Input range (slider) styling */
+input[type=range] {
+  -webkit-appearance: none; /* ✅ Chrome/Safari browsers me default slider ka look hata ke custom design apply karne ke liye */
+  appearance: none;         /* ✅ Standard property (Firefox, Edge, etc.) — sab browsers me same compatibility ke liye */
+
+  width: 90%;               /* 🔲 Slider ki width (track jitna lamba hoga) */
+  height: 13px;             /* 📏 Slider track ki thickness (motai) */
+  border-radius: 5px;       /* ⭕ Track ke corners thoda rounded ho jayenge */
+  background: #4db6ac;      /* 🎨 Track ka background color (teal/greenish shade) */
+  
+  outline: none;            /* 🚫 Slider select karne pe default outline (blue border) remove */
+  opacity: 0.7;             /* 🌫️ Slider thoda transparent dikhai dega (70% visible) */
+  transition: opacity 0.2s; /* 🎬 Hover pe transparency smoothly change ho */
+}
+
+/* 🖱️ Hover effect for slider */
+input[type=range]:hover {
+  opacity: 1; /* Hover karte hi slider 100% visible (clear) ho jaye */
+}
+
+
+/* 🎚️ Slider thumb (circle handle) */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default */
+  appearance: none;
+  width: 25px;              /* Thumb size */
+  height: 25px;
+  border-radius: 50%;       /* Circle */
+  background: #81d4fa;      /* Thumb color (blue) */
+  cursor: pointer;          /* Cursor pointer */
+}
+
+  /* 🎨 Color palette circles */
+.colors {
+  width: 80%;
+  height: 80%;
+  margin-right: 0.25rem;
+  border-radius: 50%;       /* Circle shape */
+}
+
+/* 🔴🟢🔵 Predefined colors */
+.red {
+  background-color: red;
+}
+.green {
+  background-color: #55efc4;
+}
+.blue {
+  background-color: blue;
+}
+
+/* 🛠️ Tool wrapper position relative (for absolute child) */
+.tool {
+  position: relative;
+}
+
+/* 🎬 Animation class for tools */
+.add-animation {
+  animation-name: stretch;     /* Name of animation */
+  animation-duration: 0.7s;    /* Duration */
+  animation-timing-function: ease-out; 
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  opacity: 1;
+}
+
+/* 📽️ Stretch animation keyframes */
+@keyframes stretch {
+  0% {
+    transform: scale(0);       /* Start tiny */
+    opacity: 0;                /* Invisible */
+    border-radius: 100%;       /* Circle */
+  }
+  50% {
+    transform: scale(0.7);          /* ⚠️ Yeh galti hai (should be scale(0.7)) */
+    opacity: 0.5;              /* Half visible */
+  }
+  100% {
+    transform: scale(1);       /* Normal size */
+    opacity: 1;                /* Fully visible */
+  }
+}

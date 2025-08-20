@@ -1,0 +1,89 @@
+/* ================= Canvas Wrapper ================= */
+#canvas-wrapper {
+  position: relative;
+  z-index: 1;  /* canvas ke liye low stacking */
+}
+
+/* ================= Canvas ================= */
+.board {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;  /* canvas ke liye */
+}
+
+/* ================= Image Layer ================= */
+#image-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;  /* parent ignore kare mouse events */
+  z-index: 2;            /* images canvas ke upar */
+}
+
+/* ================= Uploaded Image Box ================= */
+.uploadedBox {
+  position: absolute;   
+  top: 10px;
+  left: 10px;
+  width: 300px;
+  height: 200px;         
+  cursor: move;  
+  border: none;
+  display: block;
+  overflow: hidden;
+  transition: width 0.2s ease, height 0.2s ease, top 0.1s ease, left 0.1s ease;
+  pointer-events: auto; 
+  z-index: 3;          /* image-layer ke upar */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border-radius: 6px;
+}
+
+.uploadedBox img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 6px;
+  pointer-events: none; /* drag event parent pe hoga */
+}
+
+/* Resize handle (corner) */
+.resize-handle {
+  width: 14px;
+  height: 14px;
+  background: #007bff;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: se-resize;
+  border-radius: 3px;
+  z-index: 15;          /* parent box se upar */
+}
+
+/* Close button on image */
+.close-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  background: red;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;          /* sabse upar */
+}
+
+/* ================= Tool Options / Pencil & Eraser Cards ================= */
+.tool-options {
+  position: absolute;
+  z-index: 9999;        /* hamesha canvas aur images ke upar show ho */
+  pointer-events: auto;
+}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfaid papa ki Sketchbook</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/sticky.css">
+    <link rel="stylesheet" href="./css/image.css">
+    <link rel="stylesheet" href="./css/hamburger.css">
+    <link rel="stylesheet" href="./css/queries.css">
+    <link rel="stylesheet" href="./css/canvastheme.css">
+    <link rel="shortcut icon" href="./NewIcons/whiteboard logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="combined">
+        <!-- Left Toolbar -->
+        <div class="toolBar">
+
+            <!-- Hamburger menu -->
+            <div class="hamburger is-active" id="hamburger-1">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+
+            <!-- Tool Panel -->
+            <div class="tool-panel add-animation">
+
+                <!-- ✏️ Pencil Tool -->
+                <div class="tool active">
+                    <img src="NewIcons/Black_Pencil.svg" class="tool-img" id="pencil-img"
+                        onclick="handleLocaltoolChange('pencil')">
+                    <div class="tool-options pencil">
+                        <!-- Pencil size -->
+                        <div class="pencil-size">
+                            <input type="range" id="pen-size" min="5" max="50" value="5"
+                                onchange="sizeChange(this.value)">
+                        </div>
+
+                        <!-- Pencil colors -->
+                        <div class="pencil-color">
+                            <div class="colors black" style="background:black;" onclick="handleColorChange('black')"></div>
+                            <div class="colors white" style="background:white; border:1px solid #ccc;" onclick="handleColorChange('white')"></div>
+                            <div class="colors red" style="background:red;" onclick="handleColorChange('red')"></div>
+                            <div class="colors orange" style="background:orange;" onclick="handleColorChange('orange')"></div>
+                            <div class="colors yellow" style="background:yellow;" onclick="handleColorChange('yellow')"></div>
+                            <div class="colors lime" style="background:#32CD32;" onclick="handleColorChange('#32CD32')"></div>
+                            <div class="colors green" style="background:green;" onclick="handleColorChange('green')"></div>
+                            <div class="colors cyan" style="background:cyan;" onclick="handleColorChange('cyan')"></div>
+                            <div class="colors blue" style="background:blue;" onclick="handleColorChange('blue')"></div>
+                            <div class="colors indigo" style="background:indigo;" onclick="handleColorChange('indigo')"></div>
+                            <div class="colors violet" style="background:violet;" onclick="handleColorChange('violet')"></div>
+                            <div class="colors pink" style="background:deeppink;" onclick="handleColorChange('deeppink')"></div>
+                            <div class="colors brown" style="background:brown;" onclick="handleColorChange('brown')"></div>
+                            <div class="colors gray" style="background:gray;" onclick="handleColorChange('gray')"></div>
+                            <div class="colors gold" style="background:gold;" onclick="handleColorChange('gold')"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🧽 Eraser Tool -->
+                <div class="tool eraser">
+                    <img src="NewIcons/Eraser.svg" class="tool-img" id="eraser-img"
+                        onclick="handleLocaltoolChange('eraser')">
+                    <div class="tool-options eraser">
+                        <div class="eraser-size">
+                            <input type="range" id="eraser-size" min="15" max="60" onchange="sizeChange(this.value)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 📝 Sticky Note Tool -->
+                <div class="tool">
+                    <img src="NewIcons/StickyNote.svg" onclick="handleLocaltoolChange('sticky')" class="tool-img">
+                </div>
+
+                <!-- 🖼️ Image Upload Tool -->
+                <div class="tool">
+                    <input type="file" class="input-img" accept="image/*" style="display:none;">
+                    <img src="NewIcons/photo.svg" class="upload-img tool-img" onclick="handleToolChange('upload')">
+                </div>
+
+                <!-- ⬇️ Download Tool -->
+                <div class="tool">
+                    <img src="./NewIcons/Download.svg" class="tool-img download-tool">
+                </div>
+
+                <!-- ↩️ Undo Tool -->
+                <div class="tool">
+                    <img src="./NewIcons/Undo.svg" class="tool-img undo">
+                </div>
+
+                <!-- ↪️ Redo Tool -->
+                <div class="tool">
+                    <img src="./NewIcons/Redo.svg" class="tool-img redo">
+                </div>
+
+                <!-- 🧹 Clear Tool -->
+                <div class="tool">
+                    <img src="NewIcons/clear.png" class="tool-img">
+                </div>
+
+                <!-- 🌗 Theme Change Tool -->
+                <div class="tool">
+                    <img src="NewIcons/theme.svg" alt="Change Theme" class="tool-img" id="theme-toggle">
+                </div>
+
+                <!-- 🎨 Theme Panel -->
+                <div class="theme-panel hidden" id="theme-panel">
+                    <h3>Choose Canvas Theme</h3>
+                    <div class="theme-options">
+                        <div class="theme-option" data-theme="canvas-normal">Normal</div>
+                        <div class="theme-option" data-theme="canvas-dots">Dotted</div>
+                        <div class="theme-option" data-theme="canvas-grid">Grid</div>
+                        <div class="theme-option" data-theme="canvas-ruled">Ruled</div>
+
+                        <!-- 🎨 Extra Disney + Marvel Themes -->
+                         <div class="theme-option" data-theme="canvas-frozen">❄️ Frozen Ice</div>
+   <div class="theme-option" data-theme="canvas-tangled">🌸 Tangled Glow</div>
+  <div class="theme-option" data-theme="canvas-moana">🌊 Moana Sea</div>
+   <div class="theme-option" data-theme="canvas-avengers">🛡️ Avengers Red-Blue</div>
+   <div class="theme-option" data-theme="canvas-ironman">🤖 Iron Man Arc</div>
+   <div class="theme-option" data-theme="canvas-thor">⚡ Thor Storm</div>
+   <div class="theme-option" data-theme="canvas-guardians">🌌 Guardians Cosmic</div>
+     <div class="theme-option" data-theme="canvas-drstrange">🌀 Dr. Strange Portal</div>
+                        <div class="theme-option" data-theme="canvas-dark">Dark Mode</div>
+                        <div class="theme-option" data-theme="canvas-luxury">Luxury Gold</div>
+                        <div class="theme-option" data-theme="canvas-pastel">Pastel Calm</div>
+                        <div class="theme-option" data-theme="canvas-sky">Sky Gradient</div>
+                        <div class="theme-option" data-theme="canvas-ocean">Ocean Waves</div>
+                        <div class="theme-option" data-theme="canvas-marble">White Marble</div>
+                        <div class="theme-option" data-theme="canvas-graph">Graph Paper</div>
+                        <div class="theme-option" data-theme="canvas-night">Midnight Glow</div>
+                    </div>
+                </div>
+
+                <!-- 👤 Profile -->
+                <div class="tool">
+                    <a href="https://www.linkedin.com/in/mohd-alfaid" target="_blank">
+                        <img src="NewIcons/sheikh.jpg" alt="Sheikh Logo" class="tool-img">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ✅ Drawing Board (ab wrapper ke andar canvas hoga) -->
+        <div id="canvas-wrapper" class="canvas-normal">
+            <canvas class="board"></canvas>
+            <div id="image-layer"></div>
+        
+        </div>
+    </div>
+
+    <!-- JS Files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" crossorigin></script>
+    <script src="./js/utilities/common.js"></script>
+    <script src="./js/tool.js"></script>
+    <script src="./js/sticky.js"></script>
+    <script src="./js/image.js"></script>
+    <script src="./js/draw.js"></script>
+    <script src="./js/reciever.js"></script>
+    <script src="./js/canvastheme.js"></script>
+
+      <!-- ✅ html2canvas CDN  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
+</body>
+</html>
